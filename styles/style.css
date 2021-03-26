@@ -268,3 +268,74 @@ a {
   width: 90%;
   margin: 0 auto;
 }
+
+body {
+  background-image: url("../assets/comic-image.jpg");
+  color: #e62429;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  margin-top: 50px;
+  background-color: black;
+  padding: 27px;
+}
+
+header .flexBox {
+  margin-top: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: black;
+  padding: 60px 30px;
+}
+
+header .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .flex p {
+  margin: 4px 0px 0px 0px;
+  font-size: 25px;
+  font-family: 'Comic Neue', cursive;
+  color: white;
+}
+
+header .flex form {
+  margin-left: 10px;
+}
+
+header .flex form .submit {
+  border-radius: 5px;
+  padding: 5px 8px;
+  border: none;
+  background-color: #e62429;
+  color: white;
+}
+
+header .flex form .text {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+header .fa-info-circle {
+  font-size: 35px;
+}
+
+h2 {
+  background-color: black;
+  padding: 40px;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin-top: 30px;
+  color: white;
+}
