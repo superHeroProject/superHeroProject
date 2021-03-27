@@ -278,6 +278,10 @@ body {
   color: #e62429;
 }
 
+.hidden {
+  display: none;
+}
+
 header h1 {
   text-align: center;
   font-size: 2rem;
@@ -346,4 +350,13 @@ h2 {
 
 .dropDown {
   position: absolute;
+}
+
+.dropDown .dropDownName {
+  background-color: white;
+  padding: 10px;
+  margin-top: 4px;
+  border-radius: 5px;
+  width: 215px;
+  font-weight: bold;
 }

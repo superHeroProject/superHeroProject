@@ -17,12 +17,8 @@ superHeroApp.apiKey = "10224955387210311";
 superHeroApp.getInformation = (input) => {
 
     const proxiedUrl = new URL(superHeroApp.apiUrl +  superHeroApp.apiKey +"/search/" + input);
-  
-    // console.log (proxiedUrl);
-  
+
     const url = new URL("http://proxy.hackeryou.com");
-    // console.log (url);
-    // url.search = `${superHeroApp.apiKey}` + '/1'
     url.search = new URLSearchParams({
         reqUrl: proxiedUrl
     })
@@ -33,11 +29,6 @@ superHeroApp.getInformation = (input) => {
         })
         .then ((jsonResponse)=>{
             superHeroApp.dropDown(jsonResponse,input);
-            // console.log(jsonResponse)
-            // const ul = document.querySelector('ul')
-            // const testElement = document.createElement('img');
-            // testElement.src = jsonResponse.image.url;
-            // ul.appendChild(testElement);
         })
 }
 
@@ -49,29 +40,24 @@ superHeroApp.dropDown = (jsonResp,input) =>{
     jsonData.results.forEach(character => {
         unsortedNames.push(character.name.toLowerCase());
     });
-    // console.log(unsortedNames);
     const sortedNames = unsortedNames.filter(name => {
-        // if (name[0] === lowerCaseInput) {
-            // return true;
-        // }
-        // console.log(name.startsWith(lowerCaseInput));
         return name.startsWith(lowerCaseInput);
 
         
     })
 
-    // console.log(sortedNames);
     const resultNames = [sortedNames[0],sortedNames[1], sortedNames[2]];
-    const ul = document.querySelector(".dropDown");
+    const listElements = document.querySelectorAll(".dropDownName");
 
-    resultNames.forEach (name  => {
-        // console.log(name);
-        const listElement = document.createElement("li");
-        listElement.textContent = name;
-        // listElement.classList.add("dropDown");
-        // console.log(listElement);
-        ul.append(listElement);
-    });
+    for (i = 0; i < resultNames.length; i++) {
+        listElements[i].textContent = resultNames[i];
+        listElements[i].classList.remove("hidden");
+    }
+    for (i = 0; i < 3 ; i++) {
+        if (listElements[i].textContent === "") {
+            listElements[i].classList.add("hidden");
+        }
+    }
 
 }
 
@@ -84,6 +70,7 @@ textInput.addEventListener("input", function(){
 
 //init method
 superHeroApp.init = () =>{
+    document.querySelector("input[type=text]").value = "";
     console.log("INTIALIZED!");
   
 };
