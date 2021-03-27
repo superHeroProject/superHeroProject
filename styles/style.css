@@ -263,6 +263,10 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style-type: none;
+}
+
 .wrapper {
   max-width: 1150px;
   width: 90%;
@@ -338,4 +342,8 @@ h2 {
   font-family: 'Roboto Condensed', sans-serif;
   margin-top: 30px;
   color: white;
+}
+
+.dropDown {
+  position: absolute;
 }
