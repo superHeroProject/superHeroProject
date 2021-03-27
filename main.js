@@ -32,7 +32,7 @@ superHeroApp.getInformation = (input) => {
             return response.json();
         })
         .then ((jsonResponse)=>{
-            superHeroApp.dropDown(jsonResponse);
+            superHeroApp.dropDown(jsonResponse,input);
             // console.log(jsonResponse)
             // const ul = document.querySelector('ul')
             // const testElement = document.createElement('img');
@@ -41,28 +41,39 @@ superHeroApp.getInformation = (input) => {
         })
 }
 
-
 //Function to use data from api and generate drop down menu elements and position them under search bar
-superHeroApp.dropDown = (jsonResp) =>{
+superHeroApp.dropDown = (jsonResp,input) =>{
+    const lowerCaseInput = input.toLowerCase();
     const jsonData = jsonResp;
-    const displayNames = [jsonData.results[0].name, jsonData.results[1].name, jsonData.results[2].name];
+    let unsortedNames = [];
+    jsonData.results.forEach(character => {
+        unsortedNames.push(character.name.toLowerCase());
+    });
+    // console.log(unsortedNames);
+    const sortedNames = unsortedNames.filter(name => {
+        // if (name[0] === lowerCaseInput) {
+            // return true;
+        // }
+        // console.log(name.startsWith(lowerCaseInput));
+        return name.startsWith(lowerCaseInput);
+
+        
+    })
+
+    // console.log(sortedNames);
+    const resultNames = [sortedNames[0],sortedNames[1], sortedNames[2]];
     const ul = document.querySelector(".dropDown");
 
-
-    displayNames.forEach (name  => {
-        console.log(name);
+    resultNames.forEach (name  => {
+        // console.log(name);
         const listElement = document.createElement("li");
         listElement.textContent = name;
         // listElement.classList.add("dropDown");
-        console.log(listElement);
+        // console.log(listElement);
         ul.append(listElement);
     });
 
 }
-
-
-
-
 
 //event listener for text input
 const textInput = document.querySelector("input[type=text]")
@@ -71,15 +82,11 @@ textInput.addEventListener("input", function(){
     // superHeroApp.getInformation(textInput.value);
 });
 
-
-
 //init method
 superHeroApp.init = () =>{
     console.log("INTIALIZED!");
   
 };
-
-
 
 //call init method to start app
 superHeroApp.init();
