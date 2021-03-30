@@ -28,26 +28,49 @@ superHeroApp.getInformation = (input) => {
             return response.json();
         })
         .then ((jsonResponse)=>{
-            superHeroApp.dropDown(jsonResponse,input);
+            if (jsonResponse.response === "error"){
+                const blankResult={
+                    results: []
+                };
+                
+                superHeroApp.dropDown(blankResult,input);
+         
+            }else {
+                superHeroApp.dropDown(jsonResponse,input);
+            }
         })
 }
+
+    
+
+    
+
+
+
 
 //Function to use data from api and generate drop down menu elements and position them under search bar
 superHeroApp.dropDown = (jsonResp,input) =>{
     const lowerCaseInput = input.toLowerCase();
     const jsonData = jsonResp;
-    let unsortedNames = [];
+    console.log (jsonData);
+    let unsortedNames = [];  
+
+
+
+
     jsonData.results.forEach(character => {
         unsortedNames.push(character.name.toLowerCase());
     });
     const sortedNames = unsortedNames.filter(name => {
         return name.startsWith(lowerCaseInput);
-
-        
     })
 
     const resultNames = [sortedNames[0],sortedNames[1], sortedNames[2]];
     const listElements = document.querySelectorAll(".dropDownName");
+
+    
+        
+
 
     for (i = 0; i < resultNames.length; i++) {
         listElements[i].textContent = resultNames[i];
@@ -58,7 +81,6 @@ superHeroApp.dropDown = (jsonResp,input) =>{
             listElements[i].classList.add("hidden");
         }
     }
-
 }
 
 //event listener for text input
