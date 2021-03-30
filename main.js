@@ -68,19 +68,16 @@ superHeroApp.dropDown = (jsonResp,input) =>{
     const resultNames = [sortedNames[0],sortedNames[1], sortedNames[2]];
     const listElements = document.querySelectorAll(".dropDownName");
 
-    
-        
-
-
     for (i = 0; i < resultNames.length; i++) {
         listElements[i].textContent = resultNames[i];
         listElements[i].classList.remove("hidden");
     }
     for (i = 0; i < 3 ; i++) {
-        if (listElements[i].textContent === "") {
+        if (listElements[i].textContent === "" || listElements[i].textContent=== input) {
             listElements[i].classList.add("hidden");
         }
     }
+
 }
 
 //event listener for text input
@@ -90,11 +87,22 @@ textInput.addEventListener("input", function(){
     // superHeroApp.getInformation(textInput.value);
 });
 
+//event listener for dropdown click
+const dropDownElements = document.querySelectorAll(".dropDownName");
+console.log(dropDownElements);
+
+dropDownElements.forEach(menuItem =>menuItem.addEventListener ("click", function(){
+    textInput.value= menuItem.textContent;
+    superHeroApp.getInformation(textInput.value);
+}))
+
+
+
+
 //init method
 superHeroApp.init = () =>{
     document.querySelector("input[type=text]").value = "";
     console.log("INTIALIZED!");
-  
 };
 
 //call init method to start app
