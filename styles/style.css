@@ -348,6 +348,17 @@ h2 {
   color: white;
 }
 
+.flexContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flexChild {
+  width: 50%;
+  background-color: green;
+}
+
 .dropDown {
   position: absolute;
 }

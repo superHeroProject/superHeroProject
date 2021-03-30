@@ -14,7 +14,7 @@ superHeroApp.apiKey = "10224955387210311";
 
 //create a method to request information form api
 
-superHeroApp.getInformation = (input) => {
+superHeroApp.getInformation = (input,type) => {
 
     const proxiedUrl = new URL(superHeroApp.apiUrl +  superHeroApp.apiKey +"/search/" + input);
 
@@ -32,11 +32,13 @@ superHeroApp.getInformation = (input) => {
                 const blankResult={
                     results: []
                 };
-                
-                superHeroApp.dropDown(blankResult,input);
-         
+                superHeroApp.dropDown(blankResult,input);         
             }else {
+                if (type === 'searchInput'){
                 superHeroApp.dropDown(jsonResponse,input);
+                }else{
+                    superHeroApp.displayInformation(jsonResponse);
+                }
             }
         })
 }
@@ -50,13 +52,11 @@ superHeroApp.getInformation = (input) => {
 
 //Function to use data from api and generate drop down menu elements and position them under search bar
 superHeroApp.dropDown = (jsonResp,input) =>{
-    const lowerCaseInput = input.toLowerCase();
     const jsonData = jsonResp;
-    console.log (jsonData);
+    const lowerCaseInput = input.toLowerCase();
+
+
     let unsortedNames = [];  
-
-
-
 
     jsonData.results.forEach(character => {
         unsortedNames.push(character.name.toLowerCase());
@@ -80,21 +80,58 @@ superHeroApp.dropDown = (jsonResp,input) =>{
 
 }
 
+
+//function to display picture and information when search form is submitted
+superHeroApp.displayInformation = (jsonResp) =>{
+    const jsonData= jsonResp;
+    console.log(jsonData);
+    const image = document.querySelector(".displayImage")
+
+    image.src= jsonData.results[0].image.url;
+    image.alt= `Image of ${jsonData.results[0].name}`;
+    document.querySelector(".displayName").textContent = jsonData.results[0].name;
+    document.querySelector(".displayAliases").textContent = document.querySelector(".displayAliases").textContent + jsonData.results[0].biography.aliases.join(', ');
+    document.querySelector(".displayPlace").textContent = document.querySelector(".displayPlace").textContent + jsonData.results[0].biography["place-of-birth"];
+    document.querySelector(".displayCombat").textContent = document.querySelector(".displayCombat").textContent + jsonData.results[0].powerstats.combat;
+    document.querySelector(".displayDurability").textContent = document.querySelector(".displayDurability").textContent + jsonData.results[0].powerstats.durability;
+    document.querySelector(".displayIntelligence").textContent = document.querySelector(".displayIntelligence").textContent + jsonData.results[0].powerstats.intelligence;
+    document.querySelector(".displayPower").textContent = document.querySelector(".displayPower").textContent + jsonData.results[0].powerstats.power;
+    document.querySelector(".displaySpeed").textContent = document.querySelector(".displaySpeed").textContent + jsonData.results[0].powerstats.speed;
+    document.querySelector(".displayStrength").textContent = document.querySelector(".displayStrength").textContent + jsonData.results[0].powerstats.strength;
+    document.querySelector(".displayGroup").textContent = document.querySelector(".displayGroup").textContent + jsonData.results[0].connections["group-affiliation"];
+
+  
+    
+    
+    
+    
+
+
+}
+
+
+
 //event listener for text input
-const textInput = document.querySelector("input[type=text]")
-textInput.addEventListener("input", function(){
-    superHeroApp.getInformation(textInput.value)
-    // superHeroApp.getInformation(textInput.value);
+superHeroApp.textInput = document.querySelector("input[type=text]")
+superHeroApp.textInput.addEventListener("input", function(){
+    superHeroApp.getInformation(superHeroApp.textInput.value,"searchInput")
 });
 
 //event listener for dropdown click
-const dropDownElements = document.querySelectorAll(".dropDownName");
-console.log(dropDownElements);
-
-dropDownElements.forEach(menuItem =>menuItem.addEventListener ("click", function(){
-    textInput.value= menuItem.textContent;
-    superHeroApp.getInformation(textInput.value);
+superHeroApp.dropDownElements = document.querySelectorAll(".dropDownName");
+superHeroApp.dropDownElements.forEach(menuItem =>menuItem.addEventListener ("click", function(){
+    superHeroApp.textInput.value= menuItem.textContent;
+    superHeroApp.getInformation(superHeroApp.textInput.value,"searchInput");
 }))
+
+//event listner for search submit
+superHeroApp.searchSubmit = document.querySelector("input[type=submit]")
+
+superHeroApp.searchSubmit.addEventListener("click",function(event){
+    event.preventDefault();
+    console.log('submitted');
+    superHeroApp.getInformation(superHeroApp.textInput.value,"submit");
+})
 
 
 
