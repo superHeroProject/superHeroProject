@@ -9,8 +9,43 @@ h2 {
 
 .flexContainer{
     display:flex;
+    margin-top:30px;
 }
 .flexChild{
     width: 50%;
-    background-color: green;
+    background-color: #000000;
+    color: #ffffff;
+}
+// title
+.style {
+    text-transform: uppercase;
+    font-family: initial;
+}
+// after tittle
+.style span {
+    
+    font-size: 18px;
+    font-family: 'Comic Neue', cursive;
+    text-transform: lowercase
+
+}
+.hiddenDiv {
+    display:none;
+}
+
+h3 {
+    font-size: 35px;
+}
+.fa-heart {
+    font-size: 30px;
+    color: red;
+    padding-top: 32px;
+}
+.flexItem {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+.widthDiv {
+    width: 80%;
 }

@@ -43,12 +43,6 @@ superHeroApp.getInformation = (input,type) => {
         })
 }
 
-    
-
-    
-
-
-
 
 //Function to use data from api and generate drop down menu elements and position them under search bar
 superHeroApp.dropDown = (jsonResp,input) =>{
@@ -80,36 +74,28 @@ superHeroApp.dropDown = (jsonResp,input) =>{
 
 }
 
-
 //function to display picture and information when search form is submitted
 superHeroApp.displayInformation = (jsonResp) =>{
     const jsonData= jsonResp;
     console.log(jsonData);
     const image = document.querySelector(".displayImage")
+    const displayDiv = document.querySelector(".flexContainer")
+    displayDiv.classList.remove("hiddenDiv");
 
     image.src= jsonData.results[0].image.url;
     image.alt= `Image of ${jsonData.results[0].name}`;
     document.querySelector(".displayName").textContent = jsonData.results[0].name;
-    document.querySelector(".displayAliases").textContent = document.querySelector(".displayAliases").textContent + jsonData.results[0].biography.aliases.join(', ');
-    document.querySelector(".displayPlace").textContent = document.querySelector(".displayPlace").textContent + jsonData.results[0].biography["place-of-birth"];
-    document.querySelector(".displayCombat").textContent = document.querySelector(".displayCombat").textContent + jsonData.results[0].powerstats.combat;
-    document.querySelector(".displayDurability").textContent = document.querySelector(".displayDurability").textContent + jsonData.results[0].powerstats.durability;
-    document.querySelector(".displayIntelligence").textContent = document.querySelector(".displayIntelligence").textContent + jsonData.results[0].powerstats.intelligence;
-    document.querySelector(".displayPower").textContent = document.querySelector(".displayPower").textContent + jsonData.results[0].powerstats.power;
-    document.querySelector(".displaySpeed").textContent = document.querySelector(".displaySpeed").textContent + jsonData.results[0].powerstats.speed;
-    document.querySelector(".displayStrength").textContent = document.querySelector(".displayStrength").textContent + jsonData.results[0].powerstats.strength;
-    document.querySelector(".displayGroup").textContent = document.querySelector(".displayGroup").textContent + jsonData.results[0].connections["group-affiliation"];
-
-  
-    
-    
-    
-    
-
+    document.querySelector(".displayAliases span").textContent = document.querySelector(".displayAliases span").textContent + jsonData.results[0].biography.aliases.join(', ');
+    document.querySelector(".displayPlace span").textContent = document.querySelector(".displayPlace span").textContent + jsonData.results[0].biography["place-of-birth"];
+    document.querySelector(".displayCombat span").textContent = document.querySelector(".displayCombat span").textContent + jsonData.results[0].powerstats.combat;
+    document.querySelector(".displayDurability span").textContent = document.querySelector(".displayDurability span").textContent + jsonData.results[0].powerstats.durability;
+    document.querySelector(".displayIntelligence span").textContent = document.querySelector(".displayIntelligence span").textContent + jsonData.results[0].powerstats.intelligence;
+    document.querySelector(".displayPower span").textContent = document.querySelector(".displayPower span").textContent + jsonData.results[0].powerstats.power;
+    document.querySelector(".displaySpeed span").textContent = document.querySelector(".displaySpeed span").textContent + jsonData.results[0].powerstats.speed;
+    document.querySelector(".displayStrength span").textContent = document.querySelector(".displayStrength span").textContent + jsonData.results[0].powerstats.strength;
+    document.querySelector(".displayGroup span").textContent = document.querySelector(".displayGroup span").textContent + jsonData.results[0].connections["group-affiliation"];
 
 }
-
-
 
 //event listener for text input
 superHeroApp.textInput = document.querySelector("input[type=text]")

@@ -352,11 +352,52 @@ h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 30px;
 }
 
 .flexChild {
   width: 50%;
-  background-color: green;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.style {
+  text-transform: uppercase;
+  font-family: initial;
+}
+
+.style span {
+  font-size: 18px;
+  font-family: 'Comic Neue', cursive;
+  text-transform: lowercase;
+}
+
+.hiddenDiv {
+  display: none;
+}
+
+h3 {
+  font-size: 35px;
+}
+
+.fa-heart {
+  font-size: 30px;
+  color: red;
+  padding-top: 32px;
+}
+
+.flexItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 40px;
+}
+
+.widthDiv {
+  width: 80%;
 }
 
 .dropDown {
