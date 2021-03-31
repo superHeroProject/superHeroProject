@@ -26,7 +26,7 @@ h2 {
     
     font-size: 18px;
     font-family: 'Comic Neue', cursive;
-    text-transform: lowercase
+    text-transform: lowercase;
 
 }
 .hiddenDiv {
@@ -50,10 +50,37 @@ h3 {
     width: 80%;
 }
 
-.filled{
-    background-color: green;
-}
-
 .myTeam{
-    height: 800px;
+    padding-bottom: 69px;
+     ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        li {
+            width: 20%;
+            position: relative;
+            margin: 5px 1px;
+            img {
+                border: 6px solid black;
+            }
+        }
+    }
+    p {
+        background: black;
+        padding: 9px;
+        color: white;
+        margin: 0;
+        font-weight: bold;
+        font-family: 'Comic Neue', cursive;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    i {
+        background: black;
+        position: absolute;
+        left: 0;
+        padding: 5px;
+        font-size: 31px;
+    }
+
 }

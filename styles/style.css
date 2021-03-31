@@ -400,12 +400,49 @@ h3 {
   width: 80%;
 }
 
-.filled {
-  background-color: green;
+.myTeam {
+  padding-bottom: 69px;
 }
 
-.myTeam {
-  height: 800px;
+.myTeam ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.myTeam ul li {
+  width: 20%;
+  position: relative;
+  margin: 5px 1px;
+}
+
+.myTeam ul li img {
+  border: 6px solid black;
+}
+
+.myTeam p {
+  background: black;
+  padding: 9px;
+  color: white;
+  margin: 0;
+  font-weight: bold;
+  font-family: 'Comic Neue', cursive;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.myTeam i {
+  background: black;
+  position: absolute;
+  left: 0;
+  padding: 5px;
+  font-size: 31px;
 }
 
 .dropDown {
