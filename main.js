@@ -92,10 +92,6 @@ superHeroApp.displayInformation = (jsonResp) =>{
             superHeroApp.heart.classList.add("far");
         }
     })
-    // if (superHeroApp.heart.classList.contains("fas")){
-    //     superHeroApp.heart.classList.toggle("far");
-    //     superHeroApp.heart.classList.toggle("fas");
-    // }
 
 
     console.log(jsonData);
@@ -120,9 +116,31 @@ superHeroApp.displayInformation = (jsonResp) =>{
 }
 
 
-
+//function for storing team data based on current hero
 superHeroApp.storeTeam = (currentData) =>{
     superHeroApp.team.push(currentData);
+}
+
+//function for adding and displaying image of hero at the bottom of screen
+superHeroApp.teamUl = document.querySelector(".team")
+
+superHeroApp.displayTeam = () =>{
+    superHeroApp.teamUl.innerHTML='';
+    superHeroApp.team.forEach(teamMember =>{
+        let liElement = document.createElement('li');
+        let imageElement = document.createElement('img');
+        let pElement = document.createElement('p');
+        let iElement = document.createElement('i');
+        iElement.classList.add("fas", "fa-times", "hidden")
+        imageElement.src = teamMember.image.url;
+        imageElement.alt= `Image of ${teamMember.name}`;
+        pElement.textContent = teamMember.name;
+        liElement.appendChild(iElement);
+        liElement.appendChild(imageElement);
+        liElement.appendChild(pElement);
+        superHeroApp.teamUl.appendChild(liElement);
+        
+    })
 }
 
 //event listener for text input
@@ -158,6 +176,7 @@ superHeroApp.heart.addEventListener("click", function(){
         superHeroApp.heart.classList.toggle("far");
         superHeroApp.heart.classList.toggle("fas");
         superHeroApp.storeTeam(superHeroApp.currentHero);
+        superHeroApp.displayTeam();
     } else {
         superHeroApp.heart.classList.toggle("far");
         superHeroApp.heart.classList.toggle("fas");
@@ -168,9 +187,8 @@ superHeroApp.heart.addEventListener("click", function(){
 
     }
 console.log(superHeroApp.team);
-
-
 })
+
 
 
 

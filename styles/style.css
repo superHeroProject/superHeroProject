@@ -404,6 +404,10 @@ h3 {
   background-color: green;
 }
 
+.myTeam {
+  height: 800px;
+}
+
 .dropDown {
   position: absolute;
 }
