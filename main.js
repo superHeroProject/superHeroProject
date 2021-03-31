@@ -5,6 +5,8 @@
 
 // Create application object
 const superHeroApp={};
+superHeroApp.team=[];
+
 
 //API URL+KEY
 
@@ -77,6 +79,25 @@ superHeroApp.dropDown = (jsonResp,input) =>{
 //function to display picture and information when search form is submitted
 superHeroApp.displayInformation = (jsonResp) =>{
     const jsonData= jsonResp;
+    superHeroApp.currentHero = jsonData.results[0];
+    let doesContain = false;
+    superHeroApp.team.forEach(teamMember =>{
+        if (teamMember.name === superHeroApp.currentHero.name){
+            superHeroApp.heart.classList.remove("far");
+            superHeroApp.heart.classList.add("fas");
+            doesContain = true;
+        }
+        if (doesContain === false){
+            superHeroApp.heart.classList.remove("fas");
+            superHeroApp.heart.classList.add("far");
+        }
+    })
+    // if (superHeroApp.heart.classList.contains("fas")){
+    //     superHeroApp.heart.classList.toggle("far");
+    //     superHeroApp.heart.classList.toggle("fas");
+    // }
+
+
     console.log(jsonData);
     const image = document.querySelector(".displayImage")
     const displayDiv = document.querySelector(".flexContainer")
@@ -85,16 +106,23 @@ superHeroApp.displayInformation = (jsonResp) =>{
     image.src= jsonData.results[0].image.url;
     image.alt= `Image of ${jsonData.results[0].name}`;
     document.querySelector(".displayName").textContent = jsonData.results[0].name;
-    document.querySelector(".displayAliases span").textContent = document.querySelector(".displayAliases span").textContent + jsonData.results[0].biography.aliases.join(', ');
-    document.querySelector(".displayPlace span").textContent = document.querySelector(".displayPlace span").textContent + jsonData.results[0].biography["place-of-birth"];
-    document.querySelector(".displayCombat span").textContent = document.querySelector(".displayCombat span").textContent + jsonData.results[0].powerstats.combat;
-    document.querySelector(".displayDurability span").textContent = document.querySelector(".displayDurability span").textContent + jsonData.results[0].powerstats.durability;
-    document.querySelector(".displayIntelligence span").textContent = document.querySelector(".displayIntelligence span").textContent + jsonData.results[0].powerstats.intelligence;
-    document.querySelector(".displayPower span").textContent = document.querySelector(".displayPower span").textContent + jsonData.results[0].powerstats.power;
-    document.querySelector(".displaySpeed span").textContent = document.querySelector(".displaySpeed span").textContent + jsonData.results[0].powerstats.speed;
-    document.querySelector(".displayStrength span").textContent = document.querySelector(".displayStrength span").textContent + jsonData.results[0].powerstats.strength;
-    document.querySelector(".displayGroup span").textContent = document.querySelector(".displayGroup span").textContent + jsonData.results[0].connections["group-affiliation"];
 
+    document.querySelector(".displayAliases span").textContent = document.querySelector(".displayAliases span").textContent = jsonData.results[0].biography.aliases.join(', ');
+    document.querySelector(".displayPlace span").textContent = document.querySelector(".displayPlace span").textContent = jsonData.results[0].biography["place-of-birth"];
+    document.querySelector(".displayCombat span").textContent = document.querySelector(".displayCombat span").textContent = jsonData.results[0].powerstats.combat;
+    document.querySelector(".displayDurability span").textContent = document.querySelector(".displayDurability span").textContent = jsonData.results[0].powerstats.durability;
+    document.querySelector(".displayIntelligence span").textContent = document.querySelector(".displayIntelligence span").textContent = jsonData.results[0].powerstats.intelligence;
+    document.querySelector(".displayPower span").textContent = document.querySelector(".displayPower span").textContent = jsonData.results[0].powerstats.power;
+    document.querySelector(".displaySpeed span").textContent = document.querySelector(".displaySpeed span").textContent = jsonData.results[0].powerstats.speed;
+    document.querySelector(".displayStrength span").textContent = document.querySelector(".displayStrength span").textContent = jsonData.results[0].powerstats.strength;
+    document.querySelector(".displayGroup span").textContent = document.querySelector(".displayGroup span").textContent = jsonData.results[0].connections["group-affiliation"];
+
+}
+
+
+
+superHeroApp.storeTeam = (currentData) =>{
+    superHeroApp.team.push(currentData);
 }
 
 //event listener for text input
@@ -117,6 +145,31 @@ superHeroApp.searchSubmit.addEventListener("click",function(event){
     event.preventDefault();
     console.log('submitted');
     superHeroApp.getInformation(superHeroApp.textInput.value,"submit");
+})
+
+
+
+//event listener for adding heroes (clicking heart)
+
+superHeroApp.heart= document.querySelector(".fa-heart");
+
+superHeroApp.heart.addEventListener("click", function(){
+    if (superHeroApp.heart.classList.contains("far")){
+        superHeroApp.heart.classList.toggle("far");
+        superHeroApp.heart.classList.toggle("fas");
+        superHeroApp.storeTeam(superHeroApp.currentHero);
+    } else {
+        superHeroApp.heart.classList.toggle("far");
+        superHeroApp.heart.classList.toggle("fas");
+        superHeroApp.team.splice((superHeroApp.team.findIndex(function(character){
+            return character.name == superHeroApp.currentHero.name
+        })))
+
+
+    }
+console.log(superHeroApp.team);
+
+
 })
 
 

@@ -400,6 +400,10 @@ h3 {
   width: 80%;
 }
 
+.filled {
+  background-color: green;
+}
+
 .dropDown {
   position: absolute;
 }
