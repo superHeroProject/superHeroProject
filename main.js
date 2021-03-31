@@ -139,6 +139,14 @@ superHeroApp.displayTeam = () =>{
         liElement.appendChild(imageElement);
         liElement.appendChild(pElement);
         superHeroApp.teamUl.appendChild(liElement);
+
+        liElement.addEventListener("mouseenter", function(){
+            iElement.classList.remove("hidden");
+        })
+        liElement.addEventListener("mouseleave", function(){
+            iElement.classList.add("hidden");
+        })
+
         
     })
 }
