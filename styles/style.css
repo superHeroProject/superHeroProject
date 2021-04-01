@@ -445,6 +445,10 @@ h3 {
   font-size: 31px;
 }
 
+.selected {
+  background-color: green;
+}
+
 .dropDown {
   position: absolute;
 }

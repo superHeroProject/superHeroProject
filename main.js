@@ -214,6 +214,15 @@ superHeroApp.heart.addEventListener("click", function(){
 // console.log(superHeroApp.team);
 })
 
+//event listener for information button
+superHeroApp.infoBox= document.querySelector(".information");
+superHeroApp.infoButton= document.querySelector(".fa-info-circle")
+
+superHeroApp.infoButton.addEventListener("click",function(){
+    superHeroApp.infoBox.classList.toggle("hidden");
+    superHeroApp.infoButton.classList.toggle("selected");
+    
+})
 
 
 
