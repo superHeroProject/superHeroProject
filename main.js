@@ -140,6 +140,23 @@ superHeroApp.displayTeam = () =>{
         liElement.appendChild(pElement);
         superHeroApp.teamUl.appendChild(liElement);
 
+        iElement.addEventListener("click",function(){
+
+            const tempName = this.nextSibling.nextSibling.textContent
+            console.log(tempName);
+            superHeroApp.team.splice((superHeroApp.team.findIndex(function(character){
+                return character.name == tempName
+            })),1)
+            console.log(superHeroApp.team);
+            if (superHeroApp.currentHero.name===tempName){
+                superHeroApp.heart.classList.toggle("far");
+                superHeroApp.heart.classList.toggle("fas");
+            }
+            
+            superHeroApp.displayTeam();
+
+        })
+
         liElement.addEventListener("mouseenter", function(){
             iElement.classList.remove("hidden");
         })
@@ -166,7 +183,6 @@ superHeroApp.dropDownElements.forEach(menuItem =>menuItem.addEventListener ("cli
 
 //event listner for search submit
 superHeroApp.searchSubmit = document.querySelector("input[type=submit]")
-
 superHeroApp.searchSubmit.addEventListener("click",function(event){
     event.preventDefault();
     console.log('submitted');
@@ -191,10 +207,11 @@ superHeroApp.heart.addEventListener("click", function(){
         superHeroApp.team.splice((superHeroApp.team.findIndex(function(character){
             return character.name == superHeroApp.currentHero.name
         })))
+        superHeroApp.displayTeam();
 
 
     }
-console.log(superHeroApp.team);
+// console.log(superHeroApp.team);
 })
 
 
