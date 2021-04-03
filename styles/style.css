@@ -290,6 +290,8 @@ header h1 {
   margin-top: 50px;
   background-color: black;
   padding: 27px;
+  color: white;
+  border-left: 12px solid #ffc510;
 }
 
 header .flexBox {
@@ -302,6 +304,30 @@ header .flexBox {
           justify-content: space-between;
   background-color: black;
   padding: 60px 30px;
+}
+
+header .flexBox .info {
+  position: relative;
+  width: 37px;
+}
+
+header .flexBox .information {
+  position: absolute;
+  right: 49px;
+  width: 400px;
+  background: black;
+  color: white;
+  font-size: 20px;
+  padding: 30px;
+  border: 1px solid white;
+  font-family: 'Comic Neue', cursive;
+}
+
+header .flexBox .information .infoP {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 0;
 }
 
 header .flex {
@@ -327,6 +353,7 @@ header .flex form .submit {
   border: none;
   background-color: #e62429;
   color: white;
+  font-family: 'Comic Neue', cursive;
 }
 
 header .flex form .text {
@@ -337,6 +364,7 @@ header .flex form .text {
 
 header .fa-info-circle {
   font-size: 35px;
+  color: #ffc510;
 }
 
 h2 {
@@ -401,7 +429,7 @@ h3 {
 }
 
 .myTeam {
-  padding-bottom: 69px;
+  padding-bottom: 300px;
 }
 
 .myTeam ul {
@@ -445,8 +473,12 @@ h3 {
   font-size: 31px;
 }
 
-.selected {
-  background-color: green;
+.infoStyling {
+  color: #ffc510;
+}
+
+.fa-info-circle.selected {
+  color: red;
 }
 
 .dropDown {

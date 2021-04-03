@@ -8,6 +8,8 @@ header {
     margin-top: 50px;
     background-color: black;
     padding: 27px;
+    color:white;
+    border-left: 12px solid #ffc510;
     }
     .flexBox {
         margin-top: 80px;
@@ -15,6 +17,27 @@ header {
         justify-content: space-between;
         background-color: black;
         padding: 60px 30px;
+        .info {
+        position: relative;
+        width: 37px;
+        }
+        .information {
+        position: absolute;
+        right: 49px;
+        width: 400px;
+        background: black;
+        color: white;
+        font-size: 20px;
+        padding: 30px;
+        border: 1px solid white;
+        font-family: 'Comic Neue', cursive;
+            .infoP {
+                text-transform: capitalize;
+                font-weight: bold;
+                font-size: 25px;
+                margin: 0;
+            }
+        }
     }
     .flex {
         display: flex;
@@ -32,6 +55,7 @@ header {
                 border:none;
                 background-color: #e62429;
                 color: white;
+                font-family: 'Comic Neue', cursive;
             }
             .text {
                 border: none;
@@ -42,5 +66,8 @@ header {
     }
     .fa-info-circle {
             font-size: 35px;
+            color:#ffc510;
+            
     }
+
 }
