@@ -10,7 +10,7 @@ superHeroApp.team=[];
 
 //API URL+KEY
 
-superHeroApp.apiUrl = "http://superheroapi.com/api/";
+superHeroApp.apiUrl = "https://superheroapi.com/api/";
 superHeroApp.apiKey = "10224955387210311";
 
 
@@ -20,7 +20,7 @@ superHeroApp.getInformation = (input,type) => {
 
     const proxiedUrl = new URL(superHeroApp.apiUrl +  superHeroApp.apiKey +"/search/" + input);
 
-    const url = new URL("http://proxy.hackeryou.com");
+    const url = new URL("https://proxy.hackeryou.com");
     url.search = new URLSearchParams({
         reqUrl: proxiedUrl
     })
