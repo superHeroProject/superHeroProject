@@ -10,7 +10,7 @@ superHeroApp.team=[];
 
 //API URL+KEY
 
-superHeroApp.apiUrl = "https://superheroapi.com/api/";
+superHeroApp.apiUrl = "http://superheroapi.com/api/";
 superHeroApp.apiKey = "10224955387210311";
 
 
