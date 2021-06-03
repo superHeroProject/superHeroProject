@@ -493,3 +493,33 @@ h3 {
   width: 215px;
   font-weight: bold;
 }
+
+@media (max-width: 1110px) {
+  .widthDiv {
+    margin-left: 10%;
+  }
+  img {
+    max-width: initial;
+  }
+}
+
+@media (max-width: 677px) {
+  .flexContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .flexChild {
+    width: initial;
+    padding-bottom: 50px;
+  }
+  img {
+    margin: 0 auto;
+    padding-top: 50px;
+    width: 90%;
+  }
+  .submit {
+    margin-top: 10px;
+  }
+}
