@@ -498,7 +498,7 @@ h3 {
   .widthDiv {
     margin-left: 10%;
   }
-  img {
+  .displayImage {
     max-width: initial;
   }
 }
@@ -514,12 +514,44 @@ h3 {
     width: initial;
     padding-bottom: 50px;
   }
-  img {
+  .displayImage {
     margin: 0 auto;
     padding-top: 50px;
     width: 90%;
   }
   .submit {
     margin-top: 10px;
+  }
+  .myTeam ul li {
+    width: 49%;
+    margin: 5px auto;
+  }
+  .myTeam ul {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 545px) {
+  header .flex p {
+    margin: 4px 0px 15px 6px;
+  }
+  header .flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  header .flexBox .information {
+    width: 250px;
+    right: 38px;
+  }
+}
+
+@media (max-width: 340px) {
+  header .flexBox .info {
+    right: 13%;
+  }
+  header .flexBox .information {
+    width: 200px;
   }
 }
